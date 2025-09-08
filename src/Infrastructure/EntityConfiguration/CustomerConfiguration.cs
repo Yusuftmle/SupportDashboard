@@ -44,7 +44,7 @@ namespace Infrastructure.EntityConfiguration
             // Navigation properties
             builder.HasMany(c => c.Tickets)
                 .WithMany()
-                .UsingEntity(j => j.ToTable("CustomerTickets"));
+                .UsingEntity(j => j.TTable("CustomerTickets"));
 
             // Index'ler
             builder.HasIndex(c => c.Email).IsUnique();
