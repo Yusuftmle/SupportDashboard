@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum UserRole
+    public enum PriorityStatus
     {
-        Customer = 1,
-        Agent = 2,
-        Admin = 3
+        Low = 1,
+        Medium = 2,
+        High = 3,
+        Critical = 4
     }
 }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum UserRole
+    public enum EscalationType
     {
-        Customer = 1,
-        Agent = 2,
-        Admin = 3
+        Manual = 1,
+        Automatic = 2,
+        TimeoutBased = 3
     }
 }

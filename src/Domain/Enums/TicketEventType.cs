@@ -8,10 +8,12 @@ namespace Domain.Enums
 {
     public enum TicketEventType
     {
-        Created,
-        Assigned,
-        Closed,
-        CommentAdded,
-        StatusChanged
+        Created = 1,
+        StatusChanged = 2,
+        AssigneeChanged = 3,
+        PriorityChanged = 4,
+        CommentAdded = 5,
+        Resolved = 6,
+        Reopened = 7
     }
 }

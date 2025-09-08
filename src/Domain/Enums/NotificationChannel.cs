@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Enums
 {
-    public enum UserRole
+    public enum NotificationChannel
     {
-        Customer = 1,
-        Agent = 2,
-        Admin = 3
+        InApp = 1,
+        Email = 2,
+        SMS = 3,
+       
     }
 }
