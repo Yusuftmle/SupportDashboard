@@ -23,7 +23,7 @@ namespace Domain.Entities
             Email = email;
             Role = role;
         }
-
+        .
         public void UpdateRole(UserRole role)
         {
             Role = role;
