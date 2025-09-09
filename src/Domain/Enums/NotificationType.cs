@@ -12,6 +12,7 @@ namespace Domain.Enums
         TicketAssigned = 2,
         TicketStatusChanged = 3,
         CommentAdded = 4,
-       
+        SLABreach = 5
+
     }
 }

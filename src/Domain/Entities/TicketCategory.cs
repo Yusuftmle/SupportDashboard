@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class TicketCategory
+    public class TicketCategory:BaseEntity
     {
         public string Name { get; private set; } = string.Empty;
         public string? Description { get; private set; }

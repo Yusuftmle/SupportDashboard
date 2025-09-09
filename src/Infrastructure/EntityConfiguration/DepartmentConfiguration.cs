@@ -34,8 +34,7 @@ namespace Infrastructure.EntityConfiguration
                 .OnDelete(DeleteBehavior.SetNull);
 
             builder.HasMany(d => d.Users)
-                .WithMany()
-                .UsingEntity(j => j.ToTable("DepartmentUsers"));
+                .WithMany();
 
             builder.HasMany(d => d.Categories)
                 .WithOne(c => c.Department)
