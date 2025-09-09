@@ -11,7 +11,7 @@ namespace Infrastructure.EntityConfiguration
 {
     public class TicketCategoryConfiguration : BaseEntityConfiguration<TicketCategory>
     {
-        public override void Configure(EntityTypeBuilder<TicketCategory> builder)
+        public void Configure(EntityTypeBuilder<TicketCategory> builder)
         {
             // Primary key - Name kullanıyorum geçici olarak
             builder.HasKey(tc => tc.Name);
