@@ -14,7 +14,7 @@ namespace Infrastructure.EntityConfiguration
         public override void Configure(EntityTypeBuilder<WorkingHours> builder)
         {
             base.Configure(builder);
-
+            // Properties
             builder.Property(wh => wh.DayOfWeek)
                 .HasConversion<string>()
                 .IsRequired();
