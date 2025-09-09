@@ -9,29 +9,34 @@ using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Context
 {
-    public class TicketContextFactory:IDesignTimeDbContextFactory<TicketContextFactory>
+    // Factory sınıfı - IDesignTimeDbContextFactory<TicketContext> implement eder
+    public class TicketContextFactory : IDesignTimeDbContextFactory<BlazorTicketContext>
     {
-        public TicketContextFactory CreateDbContext(string[] args)
+        public BlazorTicketContext CreateDbContext(string[] args)
         {
-
             // Config dosyalarını oku
             IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory()) // Önemli: migration çalıştırdığın klasör baz alınıyor
+                .SetBasePath(Directory.GetCurrentDirectory()) // Migration çalıştırılan klasör baz alınır
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile("appsettings.Development.json", optional: true)
                 .Build();
 
-            // Connection string'i al
-            var connectionString = configuration["BlazorSozlukDbConnectionStrings"];
+            // Connection string'i al - doğru key'i kullanın
+            var connectionString = configuration.GetConnectionString("BlazorSozlukDbConnectionStrings");
 
-            // DbContextOptions oluştur
-            var optionsBuilder = new DbContextOptionsBuilder<TicketContextFactory>();
+            // Eğer yukarıdaki null dönerse, direkt configuration["..."] kullanın
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                connectionString = configuration["BlazorSozlukDbConnectionStrings"];
+            }
+
+            // DbContextOptions oluştur - TicketContext için
+            var optionsBuilder = new DbContextOptionsBuilder<BlazorTicketContext>();
             optionsBuilder.UseSqlServer(connectionString);
 
-            // Context'i döndür
-            return new TicketContextFactory(optionsBuilder.Options);
-
+            // TicketContext'i döndür
+            return new BlazorTicketContext(optionsBuilder.Options);
         }
-
     }
 }
+

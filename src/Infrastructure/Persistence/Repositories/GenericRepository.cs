@@ -423,27 +423,7 @@ namespace Infrastructure.Persistence.Repositories
 
 
             #endregion
-            public async Task<List<TEntity>> GetByDateAsync(DateTime date)
-            {
-                // TEntity'nin AvailableDateTime özelliğine sahip olduğunu varsayalım
-                var dateProperty = typeof(TEntity).GetProperty("AppointmentDateTime");
-
-                if (dateProperty == null)
-                {
-                    throw new InvalidOperationException("AppointmentDateTime özelliği bulunamadı");
-                }
-
-                var parameter = Expression.Parameter(typeof(TEntity), "x");
-                var dateExpression = Expression.Property(parameter, "AppointmentDateTime");
-                var dateComparison = Expression.Equal(
-                    Expression.Property(dateExpression, "Date"),
-                    Expression.Constant(date.Date, typeof(DateTime))
-                );
-
-                var lambda = Expression.Lambda<Func<TEntity, bool>>(dateComparison, parameter);
-
-                return await entity.Where(lambda).ToListAsync();
-            }
+           
 
             #region SaveChanges Methods
 
@@ -459,27 +439,7 @@ namespace Infrastructure.Persistence.Repositories
 
             #endregion
 
-            public async Task<List<TEntity>> GetListByPostIdAsync(Guid postId)
-            {
-                // Önce BlogPostId'yi dene, yoksa PostId'yi dene
-                var postIdProperty = typeof(TEntity).GetProperty("BlogPostId");
-                if (postIdProperty == null)
-                {
-                    postIdProperty = typeof(TEntity).GetProperty("PostId");
-                    if (postIdProperty == null)
-                    {
-                        throw new InvalidOperationException($"{typeof(TEntity).Name} entity'sinde 'BlogPostId' veya 'PostId' özelliği bulunamadı.");
-                    }
-                }
-
-                // x => x.BlogPostId == postId (veya x.PostId == postId) ifadesini dinamik oluşturuyoruz
-                var parameter = Expression.Parameter(typeof(TEntity), "x");
-                var property = Expression.Property(parameter, postIdProperty);
-                var value = Expression.Constant(postId);
-                var equal = Expression.Equal(property, value);
-                var lambda = Expression.Lambda<Func<TEntity, bool>>(equal, parameter);
-                return await entity.Where(lambda).ToListAsync();
-            }
+          
 
             private static IQueryable<TEntity> ApplyIncludes(IQueryable<TEntity> query, params Expression<Func<TEntity, object>>[] includes)
             {

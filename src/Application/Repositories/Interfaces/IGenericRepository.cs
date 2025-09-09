@@ -7,14 +7,14 @@ namespace Infrastructure.Persistence.Repositories
     {
         int Add(TEntity entity);
         Task<int> AddAsync(TEntity entity);
-        Task<List<TEntity>> GetByDateAsync(DateTime date);
+       
         int AddOrUpdate(TEntity entity);
         Task<int> AddOrUpdateAsync(TEntity entity);
         IQueryable<TEntity> AsQueryable();
         Task BulkAdd(IEnumerable<TEntity> entities);
         Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
         Task<int> GetCountAsync(Expression<Func<TEntity, bool>> predicate = null);
-        Task<List<TEntity>> GetListByPostIdAsync(Guid postId);
+       
         Task BulkDelete(Expression<Func<TEntity, bool>> predicate);
         Task BulkDelete(IEnumerable<TEntity> entities);
         Task BulkDeleteById(IEnumerable<Guid> ids);
