@@ -34,8 +34,7 @@ namespace Infrastructure.EntityConfiguration
 
             // Navigation properties
             builder.HasMany(s => s.Tickets)
-                .WithMany()
-                .UsingEntity(j => j.ToTable("TicketSLAs"));
+                .WithMany();
 
             // Index'ler
             builder.HasIndex(s => s.Priority);

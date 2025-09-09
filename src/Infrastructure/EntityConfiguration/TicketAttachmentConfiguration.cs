@@ -11,9 +11,9 @@ namespace Infrastructure.EntityConfiguration
 {
     public class TicketAttachmentConfiguration : BaseEntityConfiguration<TicketAttachment>
     {
-        public override void Configure(EntityTypeBuilder<TicketAttachment> builder)
+        public void Configure(EntityTypeBuilder<TicketAttachment> builder)
         {
-            // Primary key composite olabilir veya ayrı Id eklenebilir
+            // Primary key - sadece FileName ile ya da composite key
             builder.HasKey(ta => new { ta.TicketId, ta.FileName });
 
             builder.Property(ta => ta.TicketId)

@@ -27,8 +27,7 @@ namespace Infrastructure.EntityConfiguration
 
             // Many-to-many relationship
             builder.HasMany(tt => tt.Tickets)
-                .WithMany()
-                .UsingEntity(j => j.ToTable("TicketTicketTags"));
+                .WithMany();
 
             // Index'ler
             builder.HasIndex(tt => tt.Name).IsUnique();

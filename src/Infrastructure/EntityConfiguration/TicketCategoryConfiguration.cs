@@ -11,9 +11,10 @@ namespace Infrastructure.EntityConfiguration
 {
     public class TicketCategoryConfiguration : BaseEntityConfiguration<TicketCategory>
     {
-        public override void Configure(EntityTypeBuilder<TicketCategory> builder)
+        public void Configure(EntityTypeBuilder<TicketCategory> builder)
         {
-            base.Configure(builder);
+            // Primary key - Name kullanıyorum geçici olarak
+            builder.HasKey(tc => tc.Name);
 
             builder.Property(tc => tc.Name)
                 .IsRequired()
@@ -37,8 +38,7 @@ namespace Infrastructure.EntityConfiguration
                 .OnDelete(DeleteBehavior.SetNull);
 
             builder.HasMany(tc => tc.Tickets)
-                .WithMany()
-            .UsingEntity(j => j.ToTable("TicketCategories"));
+                .WithMany();
 
             // Index'ler
             builder.HasIndex(tc => tc.DepartmentId);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class TicketAttachment
+    public class TicketAttachment:BaseEntity
     {
         public Guid TicketId { get; private set; }
         public Guid? CommentId { get; private set; } // Hangi yoruma ait
