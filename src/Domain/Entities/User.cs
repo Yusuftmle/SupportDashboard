@@ -30,17 +30,14 @@ namespace Domain.Entities
             LastLoginDate = DateTime.UtcNow;
         }
 
-        public void SetActiveStatus(bool isActive)
-        {
-            IsActive = isActive;
-        }
+      
         public User(string fullName, string email, UserRole role)
         {
             FullName = fullName;
             Email = email;
             Role = role;
         }
-        .
+        
         public void UpdateRole(UserRole role)
         {
             Role = role;
