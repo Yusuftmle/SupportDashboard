@@ -17,5 +17,19 @@ namespace Domain.Entities
         // Navigation
         public Ticket Ticket { get; private set; }
         public User User { get; private set; }
+        public bool IsAIGenerated { get; private set; } = false;
+        public decimal? SentimentScore { get; private set; }
+        public string? IntentClassification { get; private set; }
+
+        public void MarkAsAIGenerated()
+        {
+            IsAIGenerated = true;
+        }
+
+        public void SetSentimentAnalysis(decimal sentimentScore, string? intent)
+        {
+            SentimentScore = sentimentScore;
+            IntentClassification = intent;
+        }
     }
 }

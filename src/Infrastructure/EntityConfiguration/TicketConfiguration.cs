@@ -52,6 +52,22 @@ namespace Infrastructure.EntityConfiguration
                 .HasMaxLength(100);
 
             builder.Property(t => t.CustomerSatisfactionRating);
+            builder.Property(t => t.AIGeneratedSummary);
+
+            builder.Property(t => t.SentimentScore)
+                .HasPrecision(5, 2); // -1.00 to 1.00
+
+            builder.Property(t => t.UrgencyScoreAI)
+                .HasPrecision(5, 2); // 0.00 to 1.00
+
+            builder.Property(t => t.AIConfidenceLevel)
+                .HasPrecision(5, 2); // 0.00 to 1.00
+
+            builder.Property(t => t.SuggestedCategory)
+                .HasMaxLength(200);
+
+            // Indexes for AI fields
+           
 
             // Navigation properties
             builder.HasOne(t => t.CreatedBy)
@@ -75,6 +91,9 @@ namespace Infrastructure.EntityConfiguration
             builder.HasIndex(t => t.CreatedById);
             builder.HasIndex(t => t.AssignedToId);
             builder.HasIndex(t => t.CreateDate);
+            builder.HasIndex(t => t.SentimentScore);
+            builder.HasIndex(t => t.UrgencyScoreAI);
+            builder.HasIndex(t => new { t.SuggestedCategory, t.AIConfidenceLevel });
         }
     }
 }
