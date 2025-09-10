@@ -15,6 +15,10 @@ namespace Infrastructure.EntityConfiguration
         {
             base.Configure(builder);
 
+            // Specify table name to match migration
+            builder.ToTable("TicketEvents");
+
+            // Properties
             builder.Property(te => te.TicketId)
                 .IsRequired();
 
@@ -47,7 +51,7 @@ namespace Infrastructure.EntityConfiguration
                 .HasForeignKey(te => te.UserId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            // Index'ler
+            // Indexes
             builder.HasIndex(te => te.TicketId);
             builder.HasIndex(te => te.EventType);
             builder.HasIndex(te => te.CreateDate);

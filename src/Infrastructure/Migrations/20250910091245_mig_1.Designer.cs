@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(BlazorTicketContext))]
-    [Migration("20250909144503_mig_1")]
+    [Migration("20250910091245_mig_1")]
     partial class mig_1
     {
         /// <inheritdoc />
@@ -109,7 +109,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("Tier");
 
-                    b.ToTable("Customer");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("Domain.Entities.Department", b =>
@@ -149,7 +149,7 @@ namespace Infrastructure.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Department");
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("Domain.Entities.KnowledgeBaseArticle", b =>
@@ -197,7 +197,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("Subject");
 
-                    b.ToTable("KnowledgeBaseArticle");
+                    b.ToTable("KnowledgeBaseArticles");
                 });
 
             modelBuilder.Entity("Domain.Entities.NotificationSettings", b =>
@@ -272,7 +272,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("Priority");
 
-                    b.ToTable("SLA");
+                    b.ToTable("SLAs");
                 });
 
             modelBuilder.Entity("Domain.Entities.TicketAttachment", b =>
@@ -320,7 +320,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UploadedById");
 
-                    b.ToTable("TicketAttachment");
+                    b.ToTable("TicketAttachments");
                 });
 
             modelBuilder.Entity("Domain.Entities.TicketCategory", b =>
@@ -356,7 +356,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("TicketCategory");
+                    b.ToTable("TicketCategories");
                 });
 
             modelBuilder.Entity("Domain.Entities.TicketComment", b =>
@@ -397,7 +397,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TicketComment");
+                    b.ToTable("TicketComments");
                 });
 
             modelBuilder.Entity("Domain.Entities.TicketEscalation", b =>
@@ -444,7 +444,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ToUserId");
 
-                    b.ToTable("TicketEscalation");
+                    b.ToTable("TicketEscalations");
                 });
 
             modelBuilder.Entity("Domain.Entities.TicketEvent", b =>
@@ -496,7 +496,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TicketEvent");
+                    b.ToTable("TicketEvents");
                 });
 
             modelBuilder.Entity("Domain.Entities.TicketTag", b =>
@@ -532,7 +532,7 @@ namespace Infrastructure.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("TicketTag");
+                    b.ToTable("TicketTags");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -712,24 +712,6 @@ namespace Infrastructure.Migrations
                     b.HasIndex("TicketCategoryId");
 
                     b.ToTable("Tickets");
-                });
-
-            modelBuilder.Entity("TicketCreatedEvent", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TicketEvents");
                 });
 
             modelBuilder.Entity("TicketTicketTag", b =>

@@ -30,6 +30,14 @@ namespace Infrastructure.EntityConfiguration
 
             builder.Property(tc => tc.IsPublic)
                 .IsRequired();
+            builder.Property(tc => tc.IsAIGenerated)
+               .HasDefaultValue(false);
+
+            builder.Property(tc => tc.SentimentScore)
+                .HasPrecision(5, 2);
+
+            builder.Property(tc => tc.IntentClassification)
+                .HasMaxLength(200);
 
             // Navigation properties
             builder.HasOne(tc => tc.Ticket)
@@ -46,6 +54,9 @@ namespace Infrastructure.EntityConfiguration
             builder.HasIndex(tc => tc.TicketId);
             builder.HasIndex(tc => tc.UserId);
             builder.HasIndex(tc => tc.CreateDate);
+            builder.HasIndex(tc => tc.IsAIGenerated);
+            builder.HasIndex(tc => tc.SentimentScore);
+            builder.HasIndex(tc => tc.IntentClassification);
         }
     }
 }

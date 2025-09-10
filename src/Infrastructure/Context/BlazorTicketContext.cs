@@ -20,9 +20,31 @@ namespace Infrastructure.Context
         }
 
         // DbSet'ler
+        // Ana Entity'ler
         public DbSet<User> Users { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Department> Departments { get; set; }
+
+        // Ticket ile ilgili Entity'ler  
         public DbSet<Ticket> Tickets { get; set; }
-        public DbSet<TicketCreatedEvent> TicketEvents { get; set; }
+        public DbSet<TicketCategory> TicketCategories { get; set; }
+        public DbSet<TicketComment> TicketComments { get; set; }
+        public DbSet<TicketEvent> TicketEvents { get; set; }  // Bu zaten var, düzelt
+        public DbSet<TicketEscalation> TicketEscalations { get; set; }
+        public DbSet<TicketAttachment> TicketAttachments { get; set; }
+        public DbSet<TicketTag> TicketTags { get; set; }
+
+
+        // Diğer Entity'ler
+        public DbSet<SLA> SLAs { get; set; }
+        public DbSet<KnowledgeBaseArticle> KnowledgeBaseArticles { get; set; }
+        public DbSet<NotificationSettings> NotificationSettings { get; set; }
+        public DbSet<WorkingHours> WorkingHours { get; set; }
+
+        public DbSet<AIPromptTemplate> AIPromptTemplates { get; set; }
+        public DbSet<ConversationHistory> ConversationHistories { get; set; }
+        public DbSet<AIExecutionLog> AIExecutionLogs { get; set; }
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
