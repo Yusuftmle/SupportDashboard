@@ -1,7 +1,7 @@
 ﻿using Application.DTOs.Ticket.TicketCategory;
 using MediatR;
 
-namespace Application.Queries.TicketCategorys
+namespace Application.Queries.Tickets.TicketCategorys
 {
     public class GetTicketCategoryByIdQuery : IRequest<TicketCategoryDto?>
     {

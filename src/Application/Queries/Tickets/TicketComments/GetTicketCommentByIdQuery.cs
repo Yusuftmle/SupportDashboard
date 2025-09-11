@@ -1,6 +1,7 @@
-﻿using MediatR;
+﻿using Application.DTOs.Ticket.TicketComment;
+using MediatR;
 
-namespace Application.Queries.TicketComments
+namespace Application.Queries.Tickets.TicketComments
 {
     public class GetTicketCommentByIdQuery : IRequest<TicketCommentDto?>
     {

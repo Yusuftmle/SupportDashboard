@@ -1,6 +1,7 @@
-﻿using MediatR;
+﻿using Application.DTOs.Ticket.TicketEscalation;
+using MediatR;
 
-namespace Application.Queries.TicketEscalations
+namespace Application.Queries.Tickets.TicketEscalations
 {
     public class GetTicketEscalationByIdQuery : IRequest<TicketEscalationDto?>
     {

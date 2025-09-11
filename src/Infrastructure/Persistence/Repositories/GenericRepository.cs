@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
+using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -15,8 +16,9 @@ namespace Infrastructure.Persistence.Repositories
         {
             private readonly DbContext dbContext;
             private readonly DbSet<TEntity> _dbSet;
+        
 
-            protected DbSet<TEntity> entity => dbContext.Set<TEntity>();
+        protected DbSet<TEntity> entity => dbContext.Set<TEntity>();
 
             public GenericRepository(DbContext dbContext, DbSet<TEntity> dbSet)
             {
@@ -24,10 +26,12 @@ namespace Infrastructure.Persistence.Repositories
                 _dbSet = dbSet;
             }
 
-            #region Insert Methods
+      
+
+        #region Insert Methods
 
 
-            public async Task<bool> IsDateRangeAvailableAsync<TEntity>(
+        public async Task<bool> IsDateRangeAvailableAsync<TEntity>(
          Expression<Func<TEntity, bool>> predicate,
          DateTime startDate,
          DateTime endDate,

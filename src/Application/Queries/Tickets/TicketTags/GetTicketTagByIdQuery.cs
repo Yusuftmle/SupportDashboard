@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.Queries.TicketTags
+namespace Application.Queries.Tickets.TicketTags
 {
     public class GetTicketTagByIdQuery : IRequest<TicketTagDto?>
     {
